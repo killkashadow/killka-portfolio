@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Главный контейнер -->
@@ -22,7 +22,6 @@
                 <a href="#final-cta" class="btn btn-primary pulse">НАПИСАТЬ В TELEGRAM</a>
             </div>
             <div class="hero-visual">
-                <!-- Абстрактная 3D графика -->
                 <div class="abstract-shape shape-1"></div>
                 <div class="abstract-shape shape-2"></div>
                 <div class="abstract-shape shape-3"></div>
@@ -34,6 +33,7 @@
         <section class="pain dark-bg">
             <div class="section-header">
                 <h2>ПРОБЛЕМЫ, КОТОРЫЕ Я РЕШАЮ</h2>
+                <p class="section-subtitle">Типичные сложности, с которыми сталкиваются владельцы бизнеса</p>
             </div>
             <div class="pain-cards">
                 <div class="pain-card slide-up">
@@ -41,21 +41,21 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <h3>Потеря времени</h3>
-                    <p>Ручная обработка заказов, ответы на одни и те же вопросы, учет в Excel — это съедает десятки часов в месяц.</p>
+                    <p>Ручная обработка заказов, ответы на одни и те же вопросы, учет в Excel — это съедает десятки часов в месяц, которые можно было бы использовать для развития бизнеса.</p>
                 </div>
                 <div class="pain-card slide-up" style="animation-delay: 0.2s;">
                     <div class="pain-icon">
                         <i class="fas fa-project-diagram"></i>
                     </div>
                     <h3>Хаос в процессах</h3>
-                    <p>Нет четкой системы: клиенты теряются, задачи забываются, сотрудники не понимают, кто что должен делать.</p>
+                    <p>Нет четкой системы: клиенты теряются, задачи забываются, сотрудники не понимают, кто что должен делать. Это приводит к ошибкам и недовольству клиентов.</p>
                 </div>
                 <div class="pain-card slide-up" style="animation-delay: 0.4s;">
                     <div class="pain-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Упущенная прибыль</h3>
-                    <p>Клиенты уходят к конкурентам из-за медленной обработки заявок. Ошибки в расчетах ведут к финансовым потерям.</p>
+                    <p>Клиенты уходят к конкурентам из-за медленной обработки заявок. Ошибки в расчетах ведут к финансовым потерям. Без автоматизации масштабирование становится невозможным.</p>
                 </div>
             </div>
         </section>
@@ -65,8 +65,8 @@
             <div class="solution-content">
                 <h2>РЕШЕНИЕ: ИНТЕЛЛЕКТУАЛЬНЫЙ ИСПОЛНИТЕЛЬ</h2>
                 <p>Я создаю Telegram-ботов и системы автоматизации, которые работают как идеальный сотрудник: не устает, не ошибается, доступен 24/7.</p>
-                <p>От простых автоответчиков до сложных систем с интеграцией API, баз данных и машинного обучения. Все под ключ.</p>
-                <div class="solution-arrow">
+                <p>От простых автоответчиков до сложных систем с интеграцией API, баз данных и машинного обучения. Все под ключ — от анализа до внедрения и поддержки.</p>
+                <div class="solution-arrow" id="learn-more-btn">
                     <span>Узнать, как это работает</span>
                     <i class="fas fa-arrow-right"></i>
                 </div>
@@ -77,12 +77,19 @@
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
-                        <div class="line chaotic"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="chaotic-line"></div>
                     </div>
                     <div class="order-side">
-                        <div class="flow-line"></div>
+                        <div class="flow-arrow">→</div>
                         <div class="bot-silhouette">
                             <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="order-lines">
+                            <div class="order-line"></div>
+                            <div class="order-line"></div>
+                            <div class="order-line"></div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +106,7 @@
                 <div class="principle-card fade-in">
                     <div class="principle-number">01</div>
                     <h3>Глубокий анализ</h3>
-                    <p>Прежде чем писать код, я изучаю ваш бизнес-процесс до мелочей. Это гарантирует, что решение будет работать именно так, как нужно вам.</p>
+                    <p>Прежде чем писать код, я изучаю ваш бизнес-процесс до мелочей. Это гарантирует, что решение будет работать именно так, как нужно вам, а не как мне удобно.</p>
                     <div class="benefit">
                         <strong>Выгода для вас:</strong> Система, которая решает реальные проблемы, а не создает новые.
                     </div>
@@ -107,7 +114,7 @@
                 <div class="principle-card fade-in" style="animation-delay: 0.2s;">
                     <div class="principle-number">02</div>
                     <h3>Прозрачность и отчетность</h3>
-                    <p>Вы будете видеть каждый этап работы. Регулярные отчеты, тестовый доступ, возможность вносить правки на любом этапе.</p>
+                    <p>Вы будете видеть каждый этап работы. Регулярные отчеты, тестовый доступ, возможность вносить правки на любом этапе. Никаких сюрпризов в конце.</p>
                     <div class="benefit">
                         <strong>Выгода для вас:</strong> Полный контроль над процессом и бюджетом.
                     </div>
@@ -115,7 +122,7 @@
                 <div class="principle-card fade-in" style="animation-delay: 0.4s;">
                     <div class="principle-number">03</div>
                     <h3>Поддержка после запуска</h3>
-                    <p>Моя работа не заканчивается сдачей проекта. Я предоставляю поддержку, обучаю вашу команду и помогаю с масштабированием.</p>
+                    <p>Моя работа не заканчивается сдачей проекта. Я предоставляю поддержку 3 месяца бесплатно, обучаю вашу команду и помогаю с масштабированием системы.</p>
                     <div class="benefit">
                         <strong>Выгода для вас:</strong> Долгосрочное партнерство, а не разовая услуга.
                     </div>
@@ -127,35 +134,35 @@
         </section>
 
         <!-- 5. Process (DESIRE -> ACTION) -->
-        <section class="process dark-bg">
+        <section id="process" class="process dark-bg">
             <div class="section-header">
                 <h2>КАК ЭТО РАБОТАЕТ?</h2>
-                <p class="section-subtitle">4 шага к автоматизации</p>
+                <p class="section-subtitle">4 шага к вашей автоматизации</p>
             </div>
             <div class="timeline">
                 <div class="timeline-step">
                     <div class="step-circle">1</div>
                     <div class="step-icon"><i class="fas fa-comment-dots"></i></div>
                     <h3>Консультация</h3>
-                    <p>Обсуждаем ваши задачи, анализируем процессы, определяем цели автоматизации.</p>
+                    <p>Обсуждаем ваши задачи, анализируем процессы, определяем цели автоматизации и составляем план действий.</p>
                 </div>
                 <div class="timeline-step">
                     <div class="step-circle">2</div>
                     <div class="step-icon"><i class="fas fa-search"></i></div>
                     <h3>Анализ и план</h3>
-                    <p>Разрабатываю техническое задание, предлагаю решение, согласовываем бюджет и сроки.</p>
+                    <p>Разрабатываю техническое задание, предлагаю оптимальное решение, согласовываем бюджет и реалистичные сроки.</p>
                 </div>
                 <div class="timeline-step">
                     <div class="step-circle">3</div>
                     <div class="step-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Разработка</h3>
-                    <p>Создаю и тестирую решение, предоставляю промежуточные результаты для обратной связи.</p>
+                    <p>Создаю и тестирую решение, предоставляю промежуточные результаты для вашей обратной связи и корректировок.</p>
                 </div>
                 <div class="timeline-step">
                     <div class="step-circle">4</div>
                     <div class="step-icon"><i class="fas fa-check-circle"></i></div>
                     <h3>Запуск и поддержка</h3>
-                    <p>Внедряю систему в ваш бизнес, обучаю команду, обеспечиваю техническую поддержку.</p>
+                    <p>Внедряю систему в ваш бизнес, обучаю вашу команду, обеспечиваю техническую поддержку и дальнейшее развитие.</p>
                 </div>
                 <div class="timeline-line"></div>
             </div>
@@ -209,7 +216,7 @@
                     А теперь представьте, как изменится ваш бизнес с правильно настроенной автоматизацией.
                 </p>
                 <div class="footer-links">
-                    <p>&copy; 2023 Infelixq. Все права защищены.</p>
+                    <p>&copy; <span id="current-year">2025</span> Infelixq. Все права защищены.</p>
                     <p>Также я доступен на <a href="https://kwork.ru/user/killkat" target="_blank">Kwork</a></p>
                 </div>
             </div>
