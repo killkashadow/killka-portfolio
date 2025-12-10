@@ -3,1249 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KILLKA | Elite AI Engineering</title>
+    <title>phantom.protect // Tимур // AI & Automation Developer</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #8b5cf6;
-            --secondary: #06d6a0;
-            --accent: #ef476f;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gray-light: #cbd5e1;
-            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
-            --gradient-secondary: linear-gradient(135deg, var(--secondary), #06b6d4);
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --border-radius-lg: 20px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--light);
-            background: var(--darker);
-            overflow-x: hidden;
-            cursor: default;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .gradient-text {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-gradient {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loading-content {
-            text-align: center;
-        }
-
-        .loading-logo {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .progress-bar {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .progress-bar::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            animation: loading 1.5s ease-in-out;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 0;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 0.75rem 0;
-            background: rgba(15, 23, 42, 0.95);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gradient);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.25rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-        }
-
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: -200px;
-            right: -100px;
-        }
-
-        .blob-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--secondary);
-            bottom: -150px;
-            left: -100px;
-        }
-
-        .blob-3 {
-            width: 200px;
-            height: 200px;
-            background: var(--accent);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .title-line {
-            display: block;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--gray-light);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Tech Grid */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .tech-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius-lg);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .tech-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .tech-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tech-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-card p {
-            color: var(--gray-light);
-            line-height: 1.6;
-        }
-
-        /* Services */
-        .services {
-            background: var(--dark);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius-lg);
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .service-card.featured {
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        .service-badge {
-            position: absolute;
-            top: -10px;
-            right: 2rem;
-            background: var(--gradient);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .service-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0;
-        }
-
-        .service-card p {
-            color: var(--gray-light);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .service-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--gray-light);
-        }
-
-        .service-features i {
-            color: var(--secondary);
-        }
-
-        .service-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* AI Agents */
-        .agents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .agent-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .agent-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .agent-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .agent-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .agent-card p {
-            color: var(--gray-light);
-            line-height: 1.6;
-        }
-
-        /* Contacts */
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: var(--primary-light);
-        }
-
-        .contact-card p {
-            color: var(--gray);
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            padding: 3rem 0 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 20px;
-        }
-
-        .footer-brand .logo-gradient {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-brand p {
-            color: var(--gray);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 20px 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--dark);
-                flex-direction: column;
-                padding: 2rem;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card.featured {
-                transform: none;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .tech-grid,
-            .services-grid,
-            .agents-grid,
-            .contacts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;500;600&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁‍🗨</text></svg>">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <div class="logo-gradient">KILLKA</div>
-            </div>
-            <div class="progress-bar"></div>
-        </div>
-    </div>
+    <!-- Фон с едва заметным шумом и диагональными линиями -->
+    <div class="noise-overlay"></div>
+    <div class="grid-lines"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-gradient">KILLKA</span>
-            </a>
-            <div class="nav-menu" id="navMenu">
-                <a href="#expertise" class="nav-link">Экспертиза</a>
-                <a href="#services" class="nav-link">Услуги</a>
-                <a href="#ai-agents" class="nav-link">AI Агенты</a>
-                <a href="#portfolio" class="nav-link">Портфолио</a>
-                <a href="#contacts" class="nav-link">Контакты</a>
-            </div>
-            <a href="#contacts" class="nav-cta">
-                <span>Обсудить проект</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+    <!-- Асимметричная основная навигация-консоль -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="prompt">$</span> <span class="command">whoami</span>
+            <span class="cursor">|</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about" class="glitch" data-text="//_about">//_about</a></li>
+            <li><a href="#stack" class="glitch" data-text="//_stack">//_stack</a></li>
+            <li><a href="#projects" class="glitch" data-text="//_projects">//_projects</a></li>
+            <li><a href="#contact" class="glitch" data-text="//_contact">//_contact</a></li>
+        </ul>
+        <div class="nav-status">
+            <span class="status-indicator"></span> STATUS: <span class="status-text">ONLINE</span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="gradient-blob blob-1"></div>
-            <div class="gradient-blob blob-2"></div>
-            <div class="gradient-blob blob-3"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-star"></i>
-                <span>Elite AI Development</span>
-            </div>
-            <h1 class="hero-title">
-                <span class="title-line">Создаю</span>
-                <span class="title-line gradient-text">интеллектуальные</span>
-                <span class="title-line gradient-text">системы</span>
-            </h1>
-            <p class="hero-description">
-                Разработка продвинутых AI решений, сложных парсеров и систем автоматизации. 
-                Премиум качество для амбициозных проектов.
-            </p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">70+</div>
-                    <div class="stat-label">проектов</div>
+    <main class="container">
+        <!-- Герой-секция с псевдонимом -->
+        <section class="hero">
+            <h1 class="handwritten-title">>&gt; phantom.protect</h1>
+            <p class="subtitle">[ <span class="alias">@infelixq</span> | <span class="alias">@phantomprotect</span> | <span class="alias">killka</span> ]</p>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="close"></span>
+                        <span class="minimize"></span>
+                        <span class="maximize"></span>
+                    </div>
+                    <span class="terminal-title">terminal ~/phantom/identify</span>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">года опыта</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">успеха</div>
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> <span class="command">cat specialty.txt</span></p>
+                    <p class="output">> Backend Developer // AI Agents Engineer<br>
+                    > Парсинг данных и автоматизация процессов<br>
+                    > Архитектор Telegram-ботов<br>
+                    > Создаю цифровых призраков для вашего бизнеса.</p>
+                    <p><span class="prompt">$</span> <span class="command"><span class="cursor">|</span></span></p>
                 </div>
             </div>
-            <div class="hero-actions">
-                <a href="#contacts" class="btn btn-primary">
-                    <span>Начать проект</span>
-                    <i class="fas fa-rocket"></i>
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    <span>Смотреть работы</span>
-                </a>
-            </div>
-        </div>
-    </section>
+            <a href="#contact" class="cta-button">НАЧАТЬ СЕАНС СОЕДИНЕНИЯ</a>
+        </section>
 
-    <!-- Expertise Section -->
-    <section class="expertise" id="expertise">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Технологический стек</h2>
-                <p class="section-subtitle">Современные технологии для сложных задач</p>
+        <!-- Секция "Обо мне" -->
+        <section id="about" class="section">
+            <h2><span class="section-mark">//</span> <span class="handwritten-section">не система, а человек</span></h2>
+            <div class="content-card">
+                <p>Привет, я <strong>Тимур</strong> (<span class="highlight">killka</span> в сети). Моя работа — создавать интеллектуальные агенты и системы, которые действуют автономно, решают реальные задачи и парсят данные с хирургической точностью.</p>
+                <p>Я фокусируюсь на практической автоматизации: от телеграм-бота, который ведёт диалог как человек, до сложного агента, анализирующего данные 24/7. Мой код — это инструмент, который работает в теневой части вашего проекта, невидимый, но критически важный.</p>
+                <p class="handwritten-note">«Люблю, когда логика безупречна, а результат — магия.»</p>
             </div>
+        </section>
+
+        <!-- Секция технологий в виде сетки -->
+        <section id="stack" class="section">
+            <h2><span class="section-mark">>></span> <span class="handwritten-section">инструменты и протоколы</span></h2>
             <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python Development</h3>
-                    <p>Асинхронное программирование, оптимизация производительности, высоконагруженные системы</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI Integration</h3>
-                    <p>Интеграция GPT-4, Claude, компьютерное зрение, обработка естественного языка</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Security Systems</h3>
-                    <p>Обход Cloudflare, reCAPTCHA, резидентные прокси, антибот защита</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Data Parsing</h3>
-                    <p>Парсинг любых сайтов, работа с JavaScript, динамический контент, Telegram API</p>
-                </div>
+                <div class="tech-item">Python <span class="tech-desc">// ядро всего</span></div>
+                <div class="tech-item">Aiogram / Pyrogram <span class="tech-desc">// телеграм-боты</span></div>
+                <div class="tech-item">OpenAI API / LangChain <span class="tech-desc">// ИИ-агенты</span></div>
+                <div class="tech-item">PostgreSQL / Redis <span class="tech-desc">// данные и кэш</span></div>
+                <div class="tech-item">BeautifulSoup / Scrapy <span class="tech-desc">// парсинг</span></div>
+                <div class="tech-item">FastAPI / Django <span class="tech-desc">// бэкенд</span></div>
+                <div class="tech-item">Docker <span class="tech-desc">// контейнеризация</span></div>
+                <div class="tech-item">Git <span class="tech-desc">// контроль версий</span></div>
+                <div class="tech-item">Linux <span class="tech-desc">// среда</span></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Премиум услуги</h2>
-                <p class="section-subtitle">Комплексные решения для вашего бизнеса</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>Сложный парсинг</h3>
-                    </div>
-                    <p>Профессиональный сбор данных с обходом защиты и обработкой динамического контента</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Обход Cloudflare, reCAPTCHA</li>
-                        <li><i class="fas fa-check"></i> JavaScript рендеринг</li>
-                        <li><i class="fas fa-check"></i> Работа через резидентные прокси</li>
-                        <li><i class="fas fa-check"></i> Парсинг Telegram и соцсетей</li>
-                    </ul>
-                    <div class="service-price">от 15 000 ₽</div>
-                </div>
-                <div class="service-card featured">
-                    <div class="service-badge">Популярно</div>
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>AI Telegram боты</h3>
-                    </div>
-                    <p>Интеллектуальные боты с интеграцией AI моделей и полной автоматизацией процессов</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Интеграция GPT-4, Claude</li>
-                        <li><i class="fas fa-check"></i> Обработка изображений и голоса</li>
-                        <li><i class="fas fa-check"></i> Мультиязычная поддержка</li>
-                        <li><i class="fas fa-check"></i> Webhook интеграции</li>
-                    </ul>
-                    <div class="service-price">от 25 000 ₽</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Автоматизация</h3>
-                    </div>
-                    <p>Комплексные системы автоматизации с мониторингом и интеграцией с внешними API</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Интеграция с CRM/ERP</li>
-                        <li><i class="fas fa-check"></i> Автоматизация отчетности</li>
-                        <li><i class="fas fa-check"></i> Мониторинг и алертинг</li>
-                        <li><i class="fas fa-check"></i> Дашборды и аналитика</li>
-                    </ul>
-                    <div class="service-price">от 20 000 ₽</div>
+        <!-- Секция проектов (пока заглушка под GitHub) -->
+        <section id="projects" class="section">
+            <h2><span class="section-mark">$</span> <span class="handwritten-section">активные миссии (скоро)</span></h2>
+            <div class="github-card">
+                <p class="terminal-text"><span class="prompt">$</span> <span class="command">cd ~/projects && ls -la</span></p>
+                <p class="output">Инициализация репозиториев... Система загружает текущие миссии.</p>
+                <p class="output">Следите за обновлениями на:</p>
+                <a href="https://github.com/killkashadow" target="_blank" class="github-link">
+                    <span class="prompt">></span> https://github.com/<span class="highlight">killkashadow</span>
+                </a>
+                <div class="repo-placeholder">
+                    <div class="repo"></div>
+                    <div class="repo"></div>
+                    <div class="repo"></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- AI Agents Section -->
-    <section class="ai-agents" id="ai-agents">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">AI Агенты</h2>
-                <p class="section-subtitle">Интеллектуальные системы для автоматизации</p>
-            </div>
-            <div class="agents-grid">
-                <div class="agent-card">
-                    <div class="agent-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4>Аналитический агент</h4>
-                    <p>Сбор и анализ данных, прогнозирование трендов, генерация отчетов</p>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h4>Коммуникационный агент</h4>
-                    <p>Интеллектуальные диалоговые системы, поддержка клиентов, анализ тональности</p>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h4>Мониторинговый агент</h4>
-                    <p>Постоянный мониторинг источников, детектирование изменений, уведомления</p>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h4>Автоматизационный агент</h4>
-                    <p>Автоматизация рутинных процессов, интеграция с внешними системами</p>
+        <!-- Секция контактов -->
+        <section id="contact" class="section">
+            <h2><span class="section-mark">@</span> <span class="handwritten-section">установить связь</span></h2>
+            <div class="contact-list">
+                <a href="https://t.me/phantomprotect" target="_blank" class="contact-item">
+                    <span class="contact-icon">TG:</span>
+                    <span class="contact-value">@phantomprotect</span> <span class="contact-alias">[основной]</span>
+                </a>
+                <a href="https://t.me/infelixq" target="_blank" class="contact-item">
+                    <span class="contact-icon">TG:</span>
+                    <span class="contact-value">@infelixq</span> <span class="contact-alias">[резервный]</span>
+                </a>
+                <a href="https://kwork.ru/user/killkat" target="_blank" class="contact-item">
+                    <span class="contact-icon">KW:</span>
+                    <span class="contact-value">kwork.ru/user/killkat</span> <span class="contact-alias">[заказы]</span>
+                </a>
+                <a href="https://github.com/killkashadow" target="_blank" class="contact-item">
+                    <span class="contact-icon">GH:</span>
+                    <span class="contact-value">github.com/killkashadow</span> <span class="contact-alias">[код]</span>
+                </a>
+                <div class="contact-item">
+                    <span class="contact-icon">$</span>
+                    <span class="contact-value">killka</span> <span class="contact-alias">[никнейм]</span>
                 </div>
             </div>
-        </div>
-    </section>
+            <p class="handwritten-note center">Для сотрудничества: напишите в Telegram с пометкой "С лендинга".</p>
+        </section>
+    </main>
 
-    <!-- Portfolio Section -->
-    <section class="services" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Портфолио</h2>
-                <p class="section-subtitle">Реализованные проекты и достижения</p>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>70+ проектов</h3>
-                    <p>Успешно реализованных коммерческих проектов различной сложности</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>3+ года опыта</h3>
-                    <p>Профессиональной разработки в области AI и автоматизации</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>99% клиентов</h3>
-                    <p>Довольных результатом и оставивших положительные отзывы</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 поддержка</h3>
-                    <p>Техническая поддержка и сопровождение реализованных проектов</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacts Section -->
-    <section class="contacts" id="contacts">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Контакты</h2>
-                <p class="section-subtitle">Готов обсудить ваш проект</p>
-            </div>
-            <div class="contacts-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h4>Telegram</h4>
-                    <a href="https://t.me/phantomprotect" class="contact-link">@phantomprotect</a>
-                    <p>Основной канал связи</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h4>Kwork</h4>
-                    <a href="https://kwork.ru/user/killkat" class="contact-link">killkat</a>
-                    <p>70+ успешных проектов</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h4>GitHub</h4>
-                    <a href="https://github.com/killkashadow" class="contact-link">killkashadow</a>
-                    <p>Исходный код проектов</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h4>Email</h4>
-                    <a href="mailto:contact@killka.dev" class="contact-link">contact@killka.dev</a>
-                    <p>Деловая переписка</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo-gradient">KILLKA</div>
-                <p>Elite AI Engineering & Data Solutions</p>
-            </div>
-            <div class="footer-links">
-                <a href="#expertise">Экспертиза</a>
-                <a href="#services">Услуги</a>
-                <a href="#ai-agents">AI Агенты</a>
-                <a href="#contacts">Контакты</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 KILLKA. Все права защищены.</p>
-        </div>
+    <footer class="main-footer">
+        <p class="footer-text">(c) 2023 <span class="highlight">phantom.protect</span> // Tимур // Несуществующий протокол. Все системы активны.</p>
+        <p class="footer-subtext">v 1.0 // Этот лендинг — статичный артефакт, развернутый на GitHub.</p>
     </footer>
 
-    <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                loadingScreen.style.visibility = 'hidden';
-            }, 1000);
-        });
-
-        // Navigation Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isVisible = navMenu.style.display === 'flex';
-            navMenu.style.display = isVisible ? 'none' : 'flex';
-
-            // Update button icon
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.className = isVisible ? 'fas fa-bars' : 'fas fa-times';
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.style.display = 'none';
-                mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
-            });
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', () => {
-            // Animate cards on scroll
-            const animatedElements = document.querySelectorAll('.tech-card, .service-card, .agent-card, .contact-card');
-
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
-
-            // Add staggered animation delay
-            animatedElements.forEach((element, index) => {
-                element.style.transitionDelay = `${index * 0.1}s`;
-            });
-        });
-
-        // Gradient Animation
-        function updateGradients() {
-            const now = Date.now() / 1000;
-            const hue1 = (Math.sin(now * 0.1) * 30 + 230) % 360;
-            const hue2 = (Math.sin(now * 0.1 + 2) * 30 + 280) % 360;
-
-            document.documentElement.style.setProperty('--primary', `hsl(${hue1}, 80%, 60%)`);
-            document.documentElement.style.setProperty('--primary-light', `hsl(${hue2}, 80%, 65%)`);
-
-            requestAnimationFrame(updateGradients);
-        }
-
-        // Start gradient animation
-        updateGradients();
-
-        // Performance optimization: Throttle scroll events
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (!scrollTimeout) {
-                scrollTimeout = setTimeout(() => {
-                    scrollTimeout = null;
-                    // Update navbar
-                    const navbar = document.getElementById('navbar');
-                    if (window.scrollY > 100) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                }, 10);
-            }
-        });
-
-        // Add click effects to buttons
-        document.addEventListener('click', (e) => {
-            if (e.target.matches('.btn, .nav-cta, .service-price')) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = e.target.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.5);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    pointer-events: none;
-                `;
-
-                e.target.style.position = 'relative';
-                e.target.style.overflow = 'hidden';
-                e.target.appendChild(ripple);
-
-                setTimeout(() => ripple.remove(), 600);
-            }
-        });
-
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
