@@ -37,6 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Обработчик для кнопки "Узнать, как это работает"
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const processSection = document.getElementById('process');
+            if (processSection) {
+                window.scrollTo({
+                    top: processSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // Добавляем стиль курсора
+        learnMoreBtn.style.cursor = 'pointer';
+    }
+    
     // Анимация кругов на таймлайне при наведении
     const timelineSteps = document.querySelectorAll('.timeline-step');
     timelineSteps.forEach(step => {
@@ -57,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseenter', function() {
             const icon = this.querySelector('.pain-icon i');
             icon.style.transform = 'scale(1.1)';
+            icon.style.transition = 'transform 0.3s ease';
         });
         
         card.addEventListener('mouseleave', function() {
@@ -77,18 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Динамическое изменение года в футере
-    const yearSpan = document.querySelector('.current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-    
-    // Анимация для стрелки в блоке решения
-    const solutionArrow = document.querySelector('.solution-arrow');
-    if (solutionArrow) {
-        solutionArrow.addEventListener('click', function() {
-            document.querySelector('.process').scrollIntoView({ behavior: 'smooth' });
-        });
+    // Устанавливаем текущий год в футере
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
     }
     
     // Эффект параллакса для hero визуала
@@ -100,4 +111,31 @@ document.addEventListener('DOMContentLoaded', function() {
             heroVisual.style.transform = `translateY(-50%) translateY(${scrolled * 0.05}px)`;
         }
     });
+    
+    // Анимация для точек в блоке решения
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        // Разные задержки для разных точек
+        dot.style.animation = `float ${2 + index * 0.5}s infinite alternate`;
+    });
+    
+    // CSS для анимации точек
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Инициализация всех анимированных элементов как видимых при загрузке
+    // (для предотвращения мигания)
+    setTimeout(() => {
+        document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add('visible');
+            }
+        });
+    }, 100);
 });
