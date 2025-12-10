@@ -298,7 +298,8 @@ p {
     font-weight: 600;
     margin-top: 30px;
     cursor: pointer;
-    transition: transform var(--transition-fast);
+    transition: all var(--transition-fast);
+    padding: 10px 0;
 }
 
 .solution-arrow i {
@@ -308,6 +309,7 @@ p {
 
 .solution-arrow:hover {
     transform: translateX(5px);
+    color: #b34a00;
 }
 
 .solution-arrow:hover i {
@@ -334,25 +336,28 @@ p {
 
 .chaos-side {
     left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .order-side {
     right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .dot {
-    position: absolute;
     width: 12px;
     height: 12px;
     background-color: var(--color-light-grey);
     border-radius: 50%;
+    opacity: 0.6;
 }
 
-.chaos-side .dot:nth-child(1) { top: 20%; left: 30%; }
-.chaos-side .dot:nth-child(2) { top: 60%; left: 10%; }
-.chaos-side .dot:nth-child(3) { top: 80%; left: 40%; }
-
-.chaotic {
+.chaotic-line {
     position: absolute;
     width: 80%;
     height: 2px;
@@ -364,51 +369,52 @@ p {
     transform: rotate(15deg);
 }
 
-.flow-line {
-    position: absolute;
-    width: 80%;
-    height: 4px;
-    background-color: var(--color-dull-orange);
-    top: 50%;
-    right: 10%;
-    border-radius: 10px;
+.flow-arrow {
+    font-size: 3rem;
+    color: var(--color-dull-orange);
+    margin-bottom: 20px;
+    animation: moveArrow 2s infinite;
 }
 
-.flow-line::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-dull-orange);
-    border-radius: 10px;
-    animation: flow 3s infinite;
-}
-
-@keyframes flow {
-    0% { transform: translateX(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%); opacity: 0; }
+@keyframes moveArrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
 }
 
 .bot-silhouette {
-    position: absolute;
     width: 120px;
     height: 120px;
     background-color: var(--color-dark-grey);
     border-radius: 20px;
-    bottom: 20%;
-    right: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--color-dull-orange);
     box-shadow: var(--shadow-orange);
+    margin-bottom: 20px;
 }
 
 .bot-silhouette i {
     font-size: 3rem;
     color: var(--color-dull-orange);
 }
+
+.order-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
+
+.order-line {
+    height: 4px;
+    background-color: var(--color-dull-orange);
+    border-radius: 2px;
+}
+
+.order-line:nth-child(1) { width: 90%; }
+.order-line:nth-child(2) { width: 70%; }
+.order-line:nth-child(3) { width: 85%; }
 
 /* 4. Principles */
 .principles-cards {
@@ -463,6 +469,7 @@ p {
     padding-top: 20px;
     border-top: 1px solid var(--color-medium-grey);
     color: var(--color-white);
+    font-size: 1rem;
 }
 
 .principles-cta {
@@ -505,6 +512,7 @@ p {
     background-color: var(--color-dull-orange);
     color: var(--color-deep-black);
     border-color: var(--color-dull-orange);
+    transform: scale(1.1);
 }
 
 .step-icon {
@@ -512,6 +520,9 @@ p {
     color: var(--color-light-grey);
     margin-bottom: 20px;
     height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .timeline-line {
