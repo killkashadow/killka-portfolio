@@ -1,65 +1,33 @@
-// Минимальный JavaScript для интерактивности
+// Анимация появления элементов при скролле
 document.addEventListener('DOMContentLoaded', function() {
-
-    // Анимация курсора в терминале
-    const cursor = document.querySelector('.cursor');
-    if (cursor) {
-        setInterval(() => {
-            cursor.style.opacity = (cursor.style.opacity === '0' ? '1' : '0');
-        }, 500);
-    }
-
-    // Плавное появление секций при скролле
+    // Наблюдатель для анимации появления
     const observerOptions = {
-        threshold: 0.05,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
-
-    // Назначаем анимацию на секции
-    document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+    
+    // Наблюдаем за всеми элементами с классами анимации
+    document.querySelectorAll('.fade-in, .slide-up').forEach(element => {
+        observer.observe(element);
     });
-
-    // Простое изменение статуса в заголовке для "живости"
-    const statusLabel = document.querySelector('.status-label');
-    if (statusLabel) {
-        const originalText = statusLabel.textContent;
-        const statusVariants = ['Доступен для проектов', 'Открыт к предложениям', 'В сети'];
-        
-        setInterval(() => {
-            if (Math.random() > 0.9) {
-                const randomStatus = statusVariants[Math.floor(Math.random() * statusVariants.length)];
-                statusLabel.textContent = randomStatus;
-                
-                setTimeout(() => {
-                    statusLabel.textContent = originalText;
-                }, 2000);
-            }
-        }, 8000);
-    }
-
-    // Плавный скролл для якорных ссылок
+    
+    // Плавная прокрутка для якорных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            if (href === '#') return;
-            
             e.preventDefault();
-            const targetElement = document.querySelector(href);
             
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
@@ -67,5 +35,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+    
+    // Анимация кругов на таймлайне при наведении
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+    timelineSteps.forEach(step => {
+        step.addEventListener('mouseenter', function() {
+            const circle = this.querySelector('.step-circle');
+            circle.style.transform = 'scale(1.1)';
+        });
+        
+        step.addEventListener('mouseleave', function() {
+            const circle = this.querySelector('.step-circle');
+            circle.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Анимация иконок в карточках проблем
+    const painCards = document.querySelectorAll('.pain-card');
+    painCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.pain-icon i');
+            icon.style.transform = 'scale(1.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.pain-icon i');
+            icon.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Анимация для кнопок при наведении
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Динамическое изменение года в футере
+    const yearSpan = document.querySelector('.current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+    
+    // Анимация для стрелки в блоке решения
+    const solutionArrow = document.querySelector('.solution-arrow');
+    if (solutionArrow) {
+        solutionArrow.addEventListener('click', function() {
+            document.querySelector('.process').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    
+    // Эффект параллакса для hero визуала
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const heroVisual = document.querySelector('.hero-visual');
+        
+        if (heroVisual && window.innerWidth > 768) {
+            heroVisual.style.transform = `translateY(-50%) translateY(${scrolled * 0.05}px)`;
+        }
     });
 });
